@@ -47,4 +47,7 @@ schedular.AddTask(new TaskSchedular.Task()
     });
 ```
 
-Note: TaskSchedular is has a tolerance of 1 second by default, that is, if a task is due within a second, it will execute it right away.
+#Notes
+
+- TaskSchedular is has a tolerance of 1 second by default, that is, if a task is due within a second, it will execute it right away.
+- Tasks could be added to scheduler before starting it. Once the scheduler is started, any overdue task will be executed immediately.
