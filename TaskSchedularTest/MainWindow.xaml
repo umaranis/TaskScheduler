@@ -4,13 +4,13 @@
         Title="Task Schedular Test" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="307*"/>
-            <ColumnDefinition Width="210*"/>
+            <ColumnDefinition Width="293*"/>
+            <ColumnDefinition Width="224*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Margin="31,22,0,0" VerticalAlignment="Top" Width="75" Click="btnStart_Click"/>
-        <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Margin="128,22,0,0" VerticalAlignment="Top" Width="75" Click="btnStop_Click"/>
-        <TextBlock x:Name="lblLog" HorizontalAlignment="Left" Margin="280,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="239" Width="198" Grid.ColumnSpan="2" Text="Check Console for logging information"/>
-        <Button x:Name="btnAddTask" Content="Add a Task (recurrs every 30 sec" HorizontalAlignment="Left" Margin="31,194,0,0" VerticalAlignment="Top" Width="172" Click="btnAddTask_Click"/>
+        <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Margin="31,22,0,0" VerticalAlignment="Top" Width="75" Click="btnStart_Click" Height="22"/>
+        <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Margin="128,22,0,0" VerticalAlignment="Top" Width="75" Click="btnStop_Click" Height="22"/>
+        <TextBlock x:Name="lblLog" HorizontalAlignment="Left" Margin="4,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="198" Text="Check Console for logging information" Grid.Column="1"/>
+        <Button x:Name="btnAddTask" Content="Add a Task (recurs every 30 sec)" HorizontalAlignment="Left" Margin="144,103,0,0" VerticalAlignment="Top" Width="217" Click="btnAddTask_Click" Grid.ColumnSpan="2" Height="22"/>
 
     </Grid>
 </Window>
