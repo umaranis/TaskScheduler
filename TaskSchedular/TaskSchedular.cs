@@ -12,7 +12,7 @@ namespace TaskSchedular
     /// </summary>
     public class TaskSchedular : IDisposable
     {
-        private SortedSet<Task> taskQueue;
+        private SortedSet<ITask> taskQueue;
 
         private AutoResetEvent autoResetEvent;
 
@@ -23,7 +23,7 @@ namespace TaskSchedular
 
         public TaskSchedular()
         {
-            taskQueue = new SortedSet<Task>(new TaskComparer());
+            taskQueue = new SortedSet<ITask>(new TaskComparer());
             autoResetEvent = new AutoResetEvent(false);            
         }
 
@@ -59,9 +59,9 @@ namespace TaskSchedular
             autoResetEvent.Dispose();
         }
 
-        public void AddTask(Task task)
+        public void AddTask(ITask task)
         {
-            Task earliestTask;
+            ITask earliestTask;
 
             lock(taskQueue)
             {
@@ -74,26 +74,36 @@ namespace TaskSchedular
             {
                 autoResetEvent.Set();
                 WriteLog("AutoResetEvent is Set");
-            }
-            
+            }            
         }
 
-        private void ReScheduleRecurringTask(Task task)
+        public void AddTask(Action taskAction, DateTime startTime)
         {
-            if (task.Recurrance != TimeSpan.Zero)
+            AddTask(new RecurringTask(taskAction, startTime, TimeSpan.Zero));
+        }
+
+        public void AddTask(Action taskAction, DateTime startTime, TimeSpan recurrence)
+        {
+            AddTask(new RecurringTask(taskAction, startTime, recurrence));
+        }
+
+        private void ReScheduleRecurringTask(ITask task)
+        {
+            DateTime nextRunTime = task.GetNextRunTime(task.StartTime);
+            if (nextRunTime != DateTime.MinValue)
             {
-                task.StartTime = task.StartTime.Add(task.Recurrance);
+                task.StartTime = nextRunTime;
                 lock (taskQueue)
                     taskQueue.Add(task);
                 WriteLog("Recurring task # " + task.TaskId + " scheduled for " + task.StartTime.ToString());
             }
         }
 
-        public Task GetEarliestScheduledTask()
+        public ITask GetEarliestScheduledTask()
         {
             lock(taskQueue)
             {
-                using (IEnumerator<Task> e = taskQueue.GetEnumerator())
+                using (IEnumerator<ITask> e = taskQueue.GetEnumerator())
                 {
                     if (e.MoveNext()) 
                         return e.Current;
@@ -113,13 +123,13 @@ namespace TaskSchedular
             {
                 try
                 {
-                    Task task = GetEarliestScheduledTask();
+                    ITask task = GetEarliestScheduledTask();
                     if(task != null)
                     {
                         if (task.StartTime - DateTime.Now < tolerance)
                         {
                             WriteLog("Starting task " + task.TaskId);
-                            task.TaskAction();
+                            task.Run();
                             WriteLog("Completed task " + task.TaskId);
                             lock (taskQueue) taskQueue.Remove(task);
                             ReScheduleRecurringTask(task);
