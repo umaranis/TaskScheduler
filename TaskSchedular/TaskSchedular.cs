@@ -12,7 +12,7 @@ namespace TaskSchedular
     /// </summary>
     public class TaskSchedular : IDisposable
     {
-        private SortedSet<ITask> taskQueue;
+        private TaskCollection taskQueue;
 
         private AutoResetEvent autoResetEvent;
 
@@ -23,7 +23,7 @@ namespace TaskSchedular
 
         public TaskSchedular()
         {
-            taskQueue = new SortedSet<ITask>(new TaskComparer());
+            taskQueue = new TaskCollection();
             autoResetEvent = new AutoResetEvent(false);            
         }
 
@@ -59,6 +59,10 @@ namespace TaskSchedular
             autoResetEvent.Dispose();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="task">Once ITask object is added, it should never be updated from outside TaskScheduler</param>
         public void AddTask(ITask task)
         {
             ITask earliestTask;
@@ -99,25 +103,47 @@ namespace TaskSchedular
             }
         }
 
-        public ITask GetEarliestScheduledTask()
+        private ITask GetEarliestScheduledTask()
         {
             lock(taskQueue)
             {
-                using (IEnumerator<ITask> e = taskQueue.GetEnumerator())
-                {
-                    if (e.MoveNext()) 
-                        return e.Current;
-                    else 
-                        return null;
-                }
+                return taskQueue.First();
             }
         }
 
         public int TaskCount { get { return taskQueue.Count; } }
 
+        public bool RemoveTask(ITask task)
+        {
+            WriteLog("Removing task # " + task.TaskId);
+            lock(taskQueue)
+                return taskQueue.Remove(task);
+        }
+
+        public bool RemoveTask(string taskId)
+        {
+            lock(taskQueue)
+                return taskQueue.Remove(taskQueue.First(n => n.TaskId == taskId));
+        }
+
+        public bool UpdateTask(ITask task, DateTime startTime)
+        {
+            WriteLog("Updating task # " + task.TaskId);
+            lock(taskQueue)
+            {
+                if (RemoveTask(task))
+                {
+                    task.StartTime = startTime;
+                    AddTask(task);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void Run()
         {
-            Console.WriteLine(DateTime.Now.ToString() + ": Task Schedular thread starting");
+            WriteLog("Task Schedular thread starting");
             TimeSpan tolerance = TimeSpan.FromSeconds(1);
             while (started)
             {

@@ -35,7 +35,7 @@ namespace TaskSchedular
     {
         public int Compare(ITask x, ITask y)
         {
-            return (int)(x.StartTime.Ticks - y.StartTime.Ticks);
+            return DateTime.Compare(x.StartTime, y.StartTime);
         }
     }
 }
