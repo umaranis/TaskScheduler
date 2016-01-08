@@ -19,11 +19,12 @@ namespace TaskSchedular
         /// </summary>
         public TimeSpan Recurrence { get; set; }
 
-        public RecurringTask(Action taskAction, DateTime startTime, TimeSpan recurrence)
+        public RecurringTask(Action taskAction, DateTime startTime, TimeSpan recurrence, string taskId = null)
         {
             TaskAction = taskAction;
             StartTime = startTime;
             Recurrence = recurrence;
+            TaskId = TaskId;
         }               
 
         public void Run()

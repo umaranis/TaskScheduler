@@ -39,18 +39,15 @@ namespace TaskSchedularTest
         private string taskNumber = "1";
         private void btnAddTask_Click(object sender, RoutedEventArgs e)
         {
-
-            schedular.AddTask(new TaskSchedular.Task()
-                {
-                    TaskId = taskNumber,
-                    StartTime = DateTime.Now.AddSeconds(30),
-                    TaskAction = () =>
-                    {
-                        System.Threading.Thread.Sleep(300);
-                    },
-                    Recurrance = TimeSpan.FromSeconds(30)
-                });
-
+            TaskSchedular.ITask task = new TaskSchedular.RecurringTask(
+                () => {
+                    System.Threading.Thread.Sleep(300);
+                },
+                DateTime.Now.AddSeconds(30),
+                TimeSpan.FromSeconds(30)
+                );
+            task.TaskId = taskNumber;
+            schedular.AddTask(task);
             taskNumber = (int.Parse(taskNumber) + 1).ToString();
         }
     }
