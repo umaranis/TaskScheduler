@@ -5,6 +5,8 @@ TaskScheduler is a simple and efficient C# .Net library that runs given tasks at
 - Efficient : There is no polling. Only runs when a task is due. This is achieved though AutoResetEvent.
 - Simple  : Merely 8 KB in size. Pretty easy to use but addresses limited number of use cases.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/t5h2qs9mgaeu12ma/branch/master?svg=true)](https://ci.appveyor.com/project/umaranis/taskscheduler/branch/master)
+
 # Background
  
 .Net Framework comes with various Timer classes which give us the ability to run a task periodically.
