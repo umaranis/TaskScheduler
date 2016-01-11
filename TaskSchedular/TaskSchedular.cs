@@ -128,7 +128,7 @@ namespace TaskSchedular
 
         public bool UpdateTask(ITask task, DateTime startTime)
         {
-            WriteLog("Updating task # " + task.TaskId);
+            WriteLog("Updating task # " + task.TaskId + " (Remove & Add)");
             lock(taskQueue)
             {
                 if (RemoveTask(task))
