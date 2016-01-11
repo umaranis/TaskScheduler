@@ -24,7 +24,7 @@ namespace TaskSchedular
             TaskAction = taskAction;
             StartTime = startTime;
             Recurrence = recurrence;
-            TaskId = TaskId;
+            TaskId = taskId;
         }               
 
         public void Run()

@@ -155,7 +155,15 @@ namespace TaskSchedular
                         if (task.StartTime - DateTime.Now < tolerance)
                         {
                             WriteLog("Starting task " + task.TaskId);
-                            task.Run();
+                            try
+                            {
+                                task.Run();
+                            }
+                            catch (Exception e)
+                            {
+                                WriteLog("Exception while running Task # " + task.TaskId);
+                                WriteLog(e.ToString());
+                            }
                             WriteLog("Completed task " + task.TaskId);
                             lock (taskQueue) taskQueue.Remove(task);
                             ReScheduleRecurringTask(task);
@@ -176,9 +184,9 @@ namespace TaskSchedular
                         WriteLog("Schedular thread awakening from indefinite sleep");
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-
+                    WriteLog("Exception: " + e.ToString());
                 } 
             }
                 
