@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TaskSchedular
+namespace TaskScheduler
 {
     /// <summary>
     /// Features: Fast, Small, Doens't poll, Recurring Tasks
     /// </summary>
-    public class TaskSchedular : IDisposable
+    public class TaskScheduler : IDisposable
     {
         private TaskCollection taskQueue;
 
@@ -21,7 +21,7 @@ namespace TaskSchedular
         private bool started = false;
         public bool Started { get { return started; } }
 
-        public TaskSchedular()
+        public TaskScheduler()
         {
             taskQueue = new TaskCollection();
             autoResetEvent = new AutoResetEvent(false);            

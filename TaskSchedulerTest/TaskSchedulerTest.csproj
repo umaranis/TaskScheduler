@@ -94,7 +94,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TaskSchedular\TaskScheduler.csproj">
+    <ProjectReference Include="..\TaskScheduler\TaskScheduler.csproj">
       <Project>{c75430e8-170e-4e0c-95e7-c6b547320506}</Project>
       <Name>TaskScheduler</Name>
     </ProjectReference>

@@ -24,7 +24,7 @@ namespace TaskSchedularTest
             InitializeComponent();
         }
 
-        private TaskSchedular.TaskSchedular schedular = new TaskSchedular.TaskSchedular();
+        private TaskScheduler.TaskScheduler schedular = new TaskScheduler.TaskScheduler();
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
@@ -39,7 +39,7 @@ namespace TaskSchedularTest
         private string taskNumber = "1";
         private void btnAddTask_Click(object sender, RoutedEventArgs e)
         {
-            TaskSchedular.ITask task = new TaskSchedular.RecurringTask(
+            TaskScheduler.ITask task = new TaskScheduler.RecurringTask(
                 () => {
                     System.Threading.Thread.Sleep(300);
                 },

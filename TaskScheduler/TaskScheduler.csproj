@@ -43,7 +43,7 @@
     <Compile Include="ITask.cs" />
     <Compile Include="RecurringTask.cs" />
     <Compile Include="TaskCollection.cs" />
-    <Compile Include="TaskSchedular.cs" />
+    <Compile Include="TaskScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

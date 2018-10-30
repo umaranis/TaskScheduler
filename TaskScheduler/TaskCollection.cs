@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TaskSchedular
+namespace TaskScheduler
 {
     class TaskCollection : IEnumerable<ITask>
     {
