@@ -94,9 +94,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TaskSchedular\TaskSchedular.csproj">
+    <ProjectReference Include="..\TaskSchedular\TaskScheduler.csproj">
       <Project>{c75430e8-170e-4e0c-95e7-c6b547320506}</Project>
-      <Name>TaskSchedular</Name>
+      <Name>TaskScheduler</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,8 +7,8 @@
     <ProjectGuid>{C75430E8-170E-4E0C-95E7-C6B547320506}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TaskSchedular</RootNamespace>
-    <AssemblyName>TaskSchedular</AssemblyName>
+    <RootNamespace>TaskScheduler</RootNamespace>
+    <AssemblyName>TaskScheduler</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>

@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedular", "TaskSchedular\TaskSchedular.csproj", "{C75430E8-170E-4E0C-95E7-C6B547320506}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduler", "TaskSchedular\TaskScheduler.csproj", "{C75430E8-170E-4E0C-95E7-C6B547320506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedularTest", "TaskSchedularTest\TaskSchedularTest.csproj", "{F7252714-A86F-46F4-B4A6-496ED1340300}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedulerTest", "TaskSchedularTest\TaskSchedulerTest.csproj", "{F7252714-A86F-46F4-B4A6-496ED1340300}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFEF7BAD-A6E9-4E22-9053-213D9E2872EA}
 	EndGlobalSection
 EndGlobal
