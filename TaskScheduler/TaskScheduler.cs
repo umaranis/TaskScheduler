@@ -172,7 +172,7 @@ namespace TaskScheduler
                         {
                             TimeSpan waitTime = (task.StartTime - DateTime.Now);
                             TimeSpan min15 = TimeSpan.FromMinutes(15);
-                            if (waitTime < min15) waitTime = min15; 
+                            if (waitTime > min15) waitTime = min15; 
 
                             WriteLog("Schedular thread waiting for " + waitTime.ToString());
                             autoResetEvent.WaitOne(waitTime);
